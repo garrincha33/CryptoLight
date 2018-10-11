@@ -11,7 +11,7 @@ import Alamofire
 
 class NewsController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    let articles = [
+    var articles = [
         NewsArticles(title: "test1", url: "www1"),
         NewsArticles(title: "test2", url: "www2")
     ]
@@ -34,7 +34,7 @@ class NewsController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return articles.count
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -68,9 +68,25 @@ class NewsController: UICollectionViewController, UICollectionViewDelegateFlowLa
             }
             
             guard let data = dataResponse.data else {return}
-            let fakeString = String(data: data, encoding: .utf8)
-            print(fakeString)
+            
+            do {
+                let searchResult = try
+                JSONDecoder().decode(SearchResults.self, from: data)
+                self.articles = searchResult.articles
+                for article in self.articles {
+                    print(article.url ?? "")
+                }
+            } catch let error {
+                print("unable to decode", error)
+            }
+
         }
+        
+    }
+    
+    struct SearchResults: Decodable {
+        let totalResults: Int
+        let articles: [NewsArticles]
         
     }
     

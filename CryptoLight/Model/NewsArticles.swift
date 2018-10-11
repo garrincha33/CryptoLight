@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct NewsArticles {
+struct NewsArticles: Decodable {
     
     let title: String?
     let url: String?
