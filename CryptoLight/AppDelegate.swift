@@ -20,6 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.makeKeyAndVisible()
         window?.rootViewController = MainTabBarController()
+        
+        UINavigationBar.appearance().barStyle = .blackTranslucent
+        UINavigationBar.appearance().tintColor = UIColor.rgb(red: 51, green: 212, blue: 128)
 
         
         return true

@@ -25,6 +25,9 @@ class MainTabBarController: UITabBarController {
     private func setupTabBar() {
         let layout = UICollectionViewFlowLayout()
         let newsController = NewsController(collectionViewLayout: layout)
+        tabBar.tintColor = UIColor.rgb(red: 51, green: 212, blue: 128)
+        tabBar.isTranslucent = true
+        tabBar.barTintColor = .clear
         
         viewControllers = [
             generateNavController(with: newsController, title: "Home", image:#imageLiteral(resourceName: "home_selected") ),

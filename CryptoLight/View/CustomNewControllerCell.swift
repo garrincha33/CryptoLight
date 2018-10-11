@@ -33,17 +33,19 @@ class CustomNewsControllerCell: UICollectionViewCell {
         super.init(frame: frame)
 
         setupNewsFeed()
-        setupUI()
+
     }
     
     fileprivate func setupUI() {
-        addSubview(usernameLable)
-        usernameLable.anchor(top: titleContainer.topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 50, paddingLeft: 50, paddingBottom: 0, paddingRight: 0, width: 50, height: 50)
+      
     }
     
     fileprivate func setupNewsFeed() {
         addSubview(titleContainer)
         titleContainer.anchor(top: safeAreaLayoutGuide.topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 250)
+        
+        addSubview(usernameLable)
+        usernameLable.anchor(top: titleContainer.topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 25, paddingLeft: 25, paddingBottom: 0, paddingRight: 0, width: 100, height: 100)
     }
 
     

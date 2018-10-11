@@ -14,6 +14,7 @@ class NewsController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         collectionView?.backgroundColor = UIColor.rgb(red: 38, green: 45, blue: 47)
         collectionView.register(CustomNewsControllerCell.self, forCellWithReuseIdentifier: "cellId")
+        transparentNavBar()
 
     }
     
@@ -41,6 +42,12 @@ class NewsController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         
+    }
+    
+    fileprivate func transparentNavBar() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
     }
     
 }
