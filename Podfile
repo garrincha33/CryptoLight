@@ -7,5 +7,6 @@ target 'CryptoLight' do
 
   # Pods for CryptoLight
 pod 'Alamofire', '~> 4.7'
+pod 'SDWebImage', '~> 4.0'
 
 end

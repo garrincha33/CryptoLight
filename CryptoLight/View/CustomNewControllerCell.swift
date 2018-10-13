@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class CustomNewsControllerCell: UICollectionViewCell {
     
@@ -15,12 +16,14 @@ class CustomNewsControllerCell: UICollectionViewCell {
         lable.text = "Username"
         lable.font = UIFont.boldSystemFont(ofSize: 14)
         lable.textColor = UIColor.rgb(red: 200, green: 201, blue: 202)
+        lable.numberOfLines = -1
         return lable
         
     }()
     
-    fileprivate let titleContainer: UIView = {
-        let view = UIView()
+    fileprivate let titleContainer: UIImageView = {
+        let view = UIImageView()
+        view.backgroundColor = .yellow
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.gray
         view.layer.cornerRadius = 25
@@ -29,27 +32,35 @@ class CustomNewsControllerCell: UICollectionViewCell {
         return view
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-
-        setupNewsFeed()
-
+    var newsArticles: NewsArticles! {
+        didSet {
+            
+            usernameLable.text = newsArticles.title
+            for images in newsArticles?.urlToImage ?? [""] {
+                guard let url = URL(string: images) else {return}
+                titleContainer.sd_setImage(with: url, completed: nil)
+             
+            }
+        }
     }
-    
-    fileprivate func setupUI() {
-      
-    }
-    
+
     fileprivate func setupNewsFeed() {
         addSubview(titleContainer)
         titleContainer.anchor(top: safeAreaLayoutGuide.topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 250)
         
         addSubview(usernameLable)
-        usernameLable.anchor(top: titleContainer.topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 25, paddingLeft: 25, paddingBottom: 0, paddingRight: 0, width: 100, height: 100)
+        usernameLable.anchor(top: safeAreaLayoutGuide.topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 25, paddingLeft: 25, paddingBottom: 0, paddingRight: 0, width: 100, height: 100)
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupNewsFeed()
+        
     }
 
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder: has not been implemented")
     }
+    
+   
 }

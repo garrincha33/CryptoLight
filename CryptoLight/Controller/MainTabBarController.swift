@@ -27,8 +27,8 @@ class MainTabBarController: UITabBarController {
         tabBar.barTintColor = .clear
         
         viewControllers = [
-            generateNavController(with: newsController, title: "Home", image:#imageLiteral(resourceName: "home_selected") ),
-            generateNavController(with: ViewController(), title: "Profile", image: #imageLiteral(resourceName: "profile_selected"))
+            generateNavController(with: newsController, title: "News", image:#imageLiteral(resourceName: "home_selected") ),
+            generateNavController(with: ViewController(), title: "Prices", image: #imageLiteral(resourceName: "profile_selected"))
         
         ]
     }

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BD60F5CB5B8DD3412632C6B5EAC17964"
+               BlueprintIdentifier = "5D5146098C052E4FC5317A8B5C44978A"
                BuildableName = "Pods_CryptoLight.framework"
                BlueprintName = "Pods-CryptoLight"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BD60F5CB5B8DD3412632C6B5EAC17964"
+            BlueprintIdentifier = "5D5146098C052E4FC5317A8B5C44978A"
             BuildableName = "Pods_CryptoLight.framework"
             BlueprintName = "Pods-CryptoLight"
             ReferencedContainer = "container:Pods.xcodeproj">

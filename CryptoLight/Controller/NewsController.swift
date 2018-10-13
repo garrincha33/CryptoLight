@@ -23,7 +23,8 @@ class NewsController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! CustomNewsControllerCell
-        
+        let articles = self.articles[indexPath.row]
+        cell.newsArticles = articles
         return cell
     }
     
@@ -54,26 +55,9 @@ class NewsController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     fileprivate func fetchArticles() {
-        let url = FULL_URLS
-        Alamofire.request(url).response { (dataResponse) in
-            if let err = dataResponse.error {
-                print("unable to contact host", err)
-                return
-            }
-            guard let data = dataResponse.data else {return}
-            do {
-                let searchResult = try
-                JSONDecoder().decode(SearchResults.self, from: data)
-                self.articles = searchResult.articles
-                for article in self.articles {
-                    print(searchResult.totalResults)
-                    print(article.urlToImage)
-                    
-                    
-                }
-            } catch let error {
-                print("unable to decode", error)
-            }
+        APIService.shared.fetchArticlesFromApi { (articles) in
+            self.articles = articles
+            self.collectionView.reloadData()
         }
     }
 }
