@@ -10,6 +10,7 @@ import Foundation
 
 // Full URL: https://newsapi.org/v2/everything?sources=crypto-coins-news&apiKey=199e8836528a49c1848b82bd93e26341
 // Full URL Headlines https://newsapi.org/v2/top-headlines?country=us&apiKey=199e8836528a49c1848b82bd93e26341
+// sperating out into specfic parts incase needed to use as params
 
 struct NewsConstant {
     

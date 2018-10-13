@@ -11,20 +11,14 @@ import Alamofire
 
 class NewsController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var articles = [
-        NewsArticles(title: "test1", url: "www1"),
-        NewsArticles(title: "test2", url: "www2")
-    ]
-    
-    
+    var articles = [NewsArticles]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         collectionView?.backgroundColor = UIColor.rgb(red: 38, green: 45, blue: 47)
         collectionView.register(CustomNewsControllerCell.self, forCellWithReuseIdentifier: "cellId")
         transparentNavBar()
         fetchArticles()
-
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -60,34 +54,26 @@ class NewsController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     fileprivate func fetchArticles() {
-        let url = FULL_HEADLINES
+        let url = FULL_URLS
         Alamofire.request(url).response { (dataResponse) in
             if let err = dataResponse.error {
                 print("unable to contact host", err)
                 return
             }
-            
             guard let data = dataResponse.data else {return}
-            
             do {
                 let searchResult = try
                 JSONDecoder().decode(SearchResults.self, from: data)
                 self.articles = searchResult.articles
                 for article in self.articles {
-                    print(article.url ?? "")
+                    print(searchResult.totalResults)
+                    print(article.urlToImage)
+                    
+                    
                 }
             } catch let error {
                 print("unable to decode", error)
             }
-
         }
-        
     }
-    
-    struct SearchResults: Decodable {
-        let totalResults: Int
-        let articles: [NewsArticles]
-        
-    }
-    
 }

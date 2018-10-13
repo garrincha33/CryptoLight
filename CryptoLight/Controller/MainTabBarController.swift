@@ -13,13 +13,10 @@ class MainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = .purple
         UINavigationBar.appearance().prefersLargeTitles = true
         setupTabBar()
-        
-        
-        
+  
     }
     
     private func setupTabBar() {
@@ -34,8 +31,6 @@ class MainTabBarController: UITabBarController {
             generateNavController(with: ViewController(), title: "Profile", image: #imageLiteral(resourceName: "profile_selected"))
         
         ]
-        
-        
     }
     
     private func generateNavController(with rootViewController: UIViewController, title: String, image: UIImage) -> UIViewController {

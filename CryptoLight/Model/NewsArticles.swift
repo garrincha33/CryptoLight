@@ -8,9 +8,30 @@
 
 import Foundation
 
-struct NewsArticles: Decodable {
+struct NewsArticles {
     
-    let title: String?
-    let url: String?
+    var title: String?
+    var url: String?
+    var urlToImage: String?
     
+    enum CodingKeys: String, CodingKey {
+        case title
+        case url
+        case urlToImage
+    }
+}
+
+
+struct SearchResults: Decodable {
+    let totalResults: Int
+    let articles: [NewsArticles]
+}
+
+extension NewsArticles: Decodable {
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        title = try values.decode(String.self, forKey: .title)
+        url = try values.decode(String.self, forKey: .url)
+        urlToImage = try values.decode(String.self, forKey: .urlToImage)
+    }
 }
