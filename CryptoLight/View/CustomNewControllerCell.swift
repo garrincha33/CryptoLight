@@ -18,7 +18,6 @@ class CustomNewsControllerCell: UICollectionViewCell {
         lable.textColor = UIColor.rgb(red: 200, green: 201, blue: 202)
         lable.numberOfLines = -1
         return lable
-        
     }()
     
     fileprivate let titleContainer: UIImageView = {
@@ -26,7 +25,8 @@ class CustomNewsControllerCell: UICollectionViewCell {
         view.backgroundColor = .yellow
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.gray
-        view.layer.cornerRadius = 25
+        view.layer.cornerRadius = 16
+        view.clipsToBounds = true
         view.layer.shadowRadius = 10
         view.layer.shadowOpacity = 0.5
         return view

@@ -14,7 +14,7 @@ class APIService {
     static let shared = APIService()
     
     func fetchArticlesFromApi(completionHandler: @escaping ([NewsArticles]) -> ()) {
-        let url = FULL_BIT
+        let url = FULL_URLS
         Alamofire.request(url).response { (dataResponse) in
             if let err = dataResponse.error {
                 print("unable to contact host", err)

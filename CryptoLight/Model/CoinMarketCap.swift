@@ -22,4 +22,9 @@ struct CoinMarketCap: Decodable {
     let percent_change_24h: String?
     let percent_change_7d: String?
 
+    
+    
+    
 }
+
+

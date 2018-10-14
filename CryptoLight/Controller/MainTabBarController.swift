@@ -22,13 +22,16 @@ class MainTabBarController: UITabBarController {
     private func setupTabBar() {
         let layout = UICollectionViewFlowLayout()
         let newsController = NewsController(collectionViewLayout: layout)
+        let coinsController = CoinsController(collectionViewLayout: layout)
+        
+        
         tabBar.tintColor = UIColor.rgb(red: 51, green: 212, blue: 128)
         tabBar.isTranslucent = true
         tabBar.barTintColor = .clear
         
         viewControllers = [
             generateNavController(with: newsController, title: "News", image:#imageLiteral(resourceName: "home_selected") ),
-            generateNavController(with: ViewController(), title: "Prices", image: #imageLiteral(resourceName: "profile_selected"))
+            generateNavController(with: coinsController, title: "Prices", image: #imageLiteral(resourceName: "profile_selected"))
         
         ]
     }

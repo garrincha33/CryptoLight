@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 
 class NewsController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
@@ -46,6 +45,14 @@ class NewsController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        cell.alpha = 0
+        cell.layer.transform = CATransform3DMakeScale(0.5, 0.5, 0.5)
+        UIView.animate(withDuration: 0.9, animations: { () -> Void in
+        cell.alpha = 1
+        cell.layer.transform = CATransform3DScale(CATransform3DIdentity, 1, 1, 1)})
     }
     
     fileprivate func transparentNavBar() {
