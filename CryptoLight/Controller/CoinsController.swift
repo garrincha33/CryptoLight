@@ -11,13 +11,8 @@ import Alamofire
 
 class CoinsController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    let coins = [CoinMarketCap]()
-    
-    let coinsDummy = [
-            CoinMarketCap(name: "Bitcoin", symbol: "BTC", rank: nil, price_usd: "\(555)", market_cap_usd: nil, available_supply: nil, total_supply: nil, max_supply: nil, percent_change_1h: nil, percent_change_24h: "\(0.02)", percent_change_7d: nil),
-            CoinMarketCap(name: "Etherrum", symbol: "ETH", rank: nil, price_usd: "\(400)", market_cap_usd: nil, available_supply: nil, total_supply: nil, max_supply: nil, percent_change_1h: nil, percent_change_24h: "\(0.12)", percent_change_7d: nil)
-    ]
-    
+    var coins = [CoinMarketCap]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,6 +20,7 @@ class CoinsController: UICollectionViewController, UICollectionViewDelegateFlowL
         collectionView.register(CustomCoinControllerCell.self, forCellWithReuseIdentifier: "cellId")
         transparentNavBar()
         collectionView.layoutIfNeeded()
+        fetchCoins()
    
     }
 
@@ -44,7 +40,7 @@ class CoinsController: UICollectionViewController, UICollectionViewDelegateFlowL
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return coinsDummy.count
+        return coins.count
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -69,14 +65,31 @@ class CoinsController: UICollectionViewController, UICollectionViewDelegateFlowL
         
     }
 
-    
-    
-    
     fileprivate func transparentNavBar() {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
     }
     
-    
+    fileprivate func fetchCoins() {
+        let url = FULL_COINS
+        Alamofire.request(url).response { (dataResponse) in
+            if let error = dataResponse.error {
+                print("unable to contact host", error)
+                return
+            }
+            guard let data = dataResponse.data else {return}
+            
+            do {
+                let searchResult = try
+                JSONDecoder().decode([CoinMarketCap].self, from: data)
+                for coin in searchResult {
+                    print(coin.name ?? "")
+                    self.coins.append(coin)
+                }
+            } catch let error {
+                print("unable to decode", error)
+            }
+        }
+    }
 }

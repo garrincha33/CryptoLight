@@ -10,21 +10,38 @@ import Foundation
 
 struct CoinMarketCap: Decodable {
 
-    let name: String?
-    let symbol: String?
-    let rank: String?
-    let price_usd: String?
-    let market_cap_usd: String?
-    let available_supply: String?
-    let total_supply: String?
-    let max_supply: String?
-    let percent_change_1h: String?
-    let percent_change_24h: String?
-    let percent_change_7d: String?
+    var name: String?
+//    var symbol: String?
+//    var rank: String?
+//    var price_usd: String?
+//    var market_cap_usd: String?
+//    var available_supply: String?
+//    var total_supply: String?
+//    var max_supply: String?
+//    var percent_change_1h: String?
+//    var percent_change_24h: String?
+//    var percent_change_7d: String?
 
-    
-    
-    
+    enum CodingKeys: String, CodingKey {
+        case name
+//        case symbol
+//        case price_usd
+//        case market_cap_usd
+    }
+    //urlToImage = [try values.decode(String.self, forKey: .urlToImage)]
 }
+
+//struct CoinsResults: Decodable {
+//    var coins: [CoinMarketCap]
+//}
+
+//extension CoinMarketCap: Decodable {
+//    init(from decoder: Decoder) throws {
+//        let values = try decoder.container(keyedBy: CodingKeys.self)
+//        //name = [try values.decode(String.self, forKey: .name)]
+//    }
+
+
+
 
 
