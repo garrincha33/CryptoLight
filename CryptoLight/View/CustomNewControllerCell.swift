@@ -14,6 +14,12 @@ class CustomNewsControllerCell: UICollectionViewCell {
     let usernameLable: UILabel = {
         let lable = UILabel()
         lable.text = "Username"
+        lable.backgroundColor = UIColor(displayP3Red: 193/255, green: 19/155, blue: 57/255, alpha: 0.5)
+        lable.textAlignment = .center
+        lable.layer.cornerRadius = 16
+        lable.clipsToBounds = true
+        lable.layer.shadowRadius = 10
+        lable.layer.shadowOpacity = 0.5
         lable.font = UIFont.boldSystemFont(ofSize: 14)
         lable.textColor = UIColor.rgb(red: 200, green: 201, blue: 202)
         lable.numberOfLines = -1
@@ -49,7 +55,7 @@ class CustomNewsControllerCell: UICollectionViewCell {
         titleContainer.anchor(top: safeAreaLayoutGuide.topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 250)
         
         addSubview(usernameLable)
-        usernameLable.anchor(top: safeAreaLayoutGuide.topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 25, paddingLeft: 25, paddingBottom: 0, paddingRight: 0, width: 100, height: 100)
+        usernameLable.anchor(top: titleContainer.topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 100, height: 100)
     }
     
     override init(frame: CGRect) {
