@@ -21,8 +21,9 @@ class MainTabBarController: UITabBarController {
     
     private func setupTabBar() {
         let layout = UICollectionViewFlowLayout()
+        let coinLayout = UICollectionViewFlowLayout()
         let newsController = NewsController(collectionViewLayout: layout)
-        let coinsController = CoinsController(collectionViewLayout: layout)
+        let coinsController = CoinsController(collectionViewLayout: coinLayout)
         
         
         tabBar.tintColor = UIColor.rgb(red: 51, green: 212, blue: 128)
