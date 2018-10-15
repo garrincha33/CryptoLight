@@ -8,18 +8,15 @@
 
 import UIKit
 
-class BaseCollectionViewController<T: BaseCell<U>, U>: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-    
-    let cellId = "cellId"
+class BaseCollectionViewController<T: BaseCell<U>, U>: UICollectionViewController {
+
     var items = [U]()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        collectionView?.backgroundColor = UIColor.rgb(red: 38, green: 45, blue: 47)
-        collectionView.register(T.self, forCellWithReuseIdentifier: cellId)
+
+    override func viewWillAppear(_ animated: Bool) {
+        collectionView.layoutIfNeeded()
+        collectionView.register(T.self, forCellWithReuseIdentifier: String(describing: T.self))
+        self.loadViewIfNeeded()
         transparentNavBar()
-        
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -51,20 +48,10 @@ class BaseCollectionViewController<T: BaseCell<U>, U>: UICollectionViewControlle
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! BaseCell<U>
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: T.self), for: indexPath) as! BaseCell<U>
         cell.item = items[indexPath.row]
         return cell
     }
 
 }
 
-
-
-class SomeListController: BaseCollectionViewController<CustomNewsControllerCell, NewsArticles> {
-    override func viewDidLoad() {
-
-        items = [NewsArticles]()
-
-
-    }
-}

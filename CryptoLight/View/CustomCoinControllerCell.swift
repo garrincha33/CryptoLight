@@ -9,19 +9,7 @@
 import UIKit
 
 class CustomCoinControllerCell: BaseCell<CoinMarketCap> {
-    
-    fileprivate let titleContainer: UIView = {
-        let view = UIView()
-        view.backgroundColor = .yellow
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.gray
-        view.layer.cornerRadius = 16
-        view.clipsToBounds = true
-        view.layer.shadowRadius = 10
-        view.layer.shadowOpacity = 0.5
-        return view
-    }()
-    
+
     let name: UILabel = {
         let lable = UILabel()
         lable.text = "Bitcoin"

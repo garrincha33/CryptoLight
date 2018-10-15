@@ -25,31 +25,7 @@ class CustomNewsControllerCell: BaseCell<NewsArticles> {
         lable.numberOfLines = -1
         return lable
     }()
-    
-    fileprivate let titleContainer: UIImageView = {
-        let view = UIImageView()
-        view.backgroundColor = .yellow
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.gray
-        view.layer.cornerRadius = 16
-        view.clipsToBounds = true
-        view.layer.shadowRadius = 10
-        view.layer.shadowOpacity = 0.5
-        return view
-    }()
-    
-//    var newsArticles: NewsArticles! {
-//        didSet {
-//
-//            usernameLable.text = newsArticles.title
-//            for images in newsArticles?.urlToImage ?? [""] {
-//                guard let url = URL(string: images) else {return}
-//                titleContainer.sd_setImage(with: url, completed: nil)
-//
-//            }
-//        }
-//    }
-    
+
     override var item: NewsArticles! {
         didSet {
             usernameLable.text = item.title

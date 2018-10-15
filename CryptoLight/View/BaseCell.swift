@@ -10,7 +10,20 @@ import UIKit
 
 class BaseCell<U>: UICollectionViewCell {
     
-    var item: U!
+    var item: U! //used for didSet in custom cells
+    
+        let titleContainer: UIImageView = {
+        let view = UIImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.gray
+        view.layer.cornerRadius = 16
+        view.clipsToBounds = true
+        view.layer.shadowRadius = 10
+        view.layer.shadowOpacity = 0.5
+        return view
+    }()
+    
+    
 
     
 }
