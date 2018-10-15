@@ -24,6 +24,8 @@
 		1BDDEC68215FF48500AA0083 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BDDEC67215FF48500AA0083 /* Assets.xcassets */; };
 		1BDDEC6B215FF48500AA0083 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BDDEC69215FF48500AA0083 /* LaunchScreen.storyboard */; };
 		1BDDEC78215FF53900AA0083 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDDEC77215FF53900AA0083 /* MainTabBarController.swift */; };
+		1BFD97482175048600B27216 /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFD97472175048600B27216 /* BaseCollectionViewController.swift */; };
+		1BFD974A2175091A00B27216 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFD97492175091A00B27216 /* BaseCell.swift */; };
 		803FB90A153AC9117AE11E22 /* Pods_CryptoLight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0ABB92A4C5885F59E36CC05 /* Pods_CryptoLight.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +49,8 @@
 		1BDDEC6A215FF48500AA0083 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1BDDEC6C215FF48500AA0083 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BDDEC77215FF53900AA0083 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		1BFD97472175048600B27216 /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
+		1BFD97492175091A00B27216 /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		3660662E9303751DC91A0CE0 /* Pods-CryptoLight.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoLight.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CryptoLight/Pods-CryptoLight.debug.xcconfig"; sourceTree = "<group>"; };
 		36888AD0D542EDE9C240113E /* Pods-CryptoLight.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoLight.release.xcconfig"; path = "Pods/Target Support Files/Pods-CryptoLight/Pods-CryptoLight.release.xcconfig"; sourceTree = "<group>"; };
 		E0ABB92A4C5885F59E36CC05 /* Pods_CryptoLight.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CryptoLight.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,6 +136,7 @@
 			children = (
 				1B16C28F216D242100ADA030 /* CustomNewControllerCell.swift */,
 				1B16C2A321736C3500ADA030 /* CustomCoinControllerCell.swift */,
+				1BFD97492175091A00B27216 /* BaseCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -143,6 +148,7 @@
 				1BDDEC77215FF53900AA0083 /* MainTabBarController.swift */,
 				1B16C28D216D186F00ADA030 /* NewsController.swift */,
 				1B16C2A121735FCB00ADA030 /* CoinsController.swift */,
+				1BFD97472175048600B27216 /* BaseCollectionViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -298,11 +304,13 @@
 				1B16C2A221735FCB00ADA030 /* CoinsController.swift in Sources */,
 				1B16C299216FCD1400ADA030 /* NewsArticles.swift in Sources */,
 				1B16C2A421736C3500ADA030 /* CustomCoinControllerCell.swift in Sources */,
+				1BFD974A2175091A00B27216 /* BaseCell.swift in Sources */,
 				1B16C28E216D186F00ADA030 /* NewsController.swift in Sources */,
 				1B16C297216FC98D00ADA030 /* BaseConstant.swift in Sources */,
 				1BDDEC63215FF47F00AA0083 /* ViewController.swift in Sources */,
 				1B16C292216D25FA00ADA030 /* CustomColor.swift in Sources */,
 				1B16C29B217219DD00ADA030 /* Anchor.swift in Sources */,
+				1BFD97482175048600B27216 /* BaseCollectionViewController.swift in Sources */,
 				1BDDEC61215FF47F00AA0083 /* AppDelegate.swift in Sources */,
 				1B16C290216D242100ADA030 /* CustomNewControllerCell.swift in Sources */,
 				1B16C29D21723B6A00ADA030 /* CoinMarketCap.swift in Sources */,

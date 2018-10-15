@@ -1,44 +1,33 @@
 //
-//  NewsController.swift
+//  BaseCollectionViewController.swift
 //  CryptoLight
 //
-//  Created by Richard Price on 09/10/2018.
+//  Created by Richard Price on 15/10/2018.
 //  Copyright © 2018 twisted echo. All rights reserved.
 //
 
 import UIKit
 
-class NewsController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class BaseCollectionViewController<T: BaseCell<U>, U>: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var articles = [NewsArticles]()
-
+    let cellId = "cellId"
+    var items = [U]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         collectionView?.backgroundColor = UIColor.rgb(red: 38, green: 45, blue: 47)
-        collectionView.register(CustomNewsControllerCell.self, forCellWithReuseIdentifier: "cellId")
+        collectionView.register(T.self, forCellWithReuseIdentifier: cellId)
         transparentNavBar()
-        fetchArticles()
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! CustomNewsControllerCell
-        let articles = self.articles[indexPath.row]
-        cell.item = articles
-        return cell
+        
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return articles.count
+        return items.count
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let width = (view.frame.width - 3 * 8) / 2 + 155
-        return CGSize(width: width, height: width - 70)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -51,8 +40,8 @@ class NewsController: UICollectionViewController, UICollectionViewDelegateFlowLa
         cell.alpha = 0
         cell.layer.transform = CATransform3DMakeScale(0.5, 0.5, 0.5)
         UIView.animate(withDuration: 0.9, animations: { () -> Void in
-        cell.alpha = 1
-        cell.layer.transform = CATransform3DScale(CATransform3DIdentity, 1, 1, 1)})
+            cell.alpha = 1
+            cell.layer.transform = CATransform3DScale(CATransform3DIdentity, 1, 1, 1)})
     }
     
     fileprivate func transparentNavBar() {
@@ -61,10 +50,21 @@ class NewsController: UICollectionViewController, UICollectionViewDelegateFlowLa
         self.navigationController?.navigationBar.isTranslucent = true
     }
     
-    fileprivate func fetchArticles() {
-        APIService.shared.fetchArticlesFromApi { (articles) in
-            self.articles = articles
-            self.collectionView.reloadData()
-        }
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! BaseCell<U>
+        cell.item = items[indexPath.row]
+        return cell
+    }
+
+}
+
+
+
+class SomeListController: BaseCollectionViewController<CustomNewsControllerCell, NewsArticles> {
+    override func viewDidLoad() {
+
+        items = [NewsArticles]()
+
+
     }
 }

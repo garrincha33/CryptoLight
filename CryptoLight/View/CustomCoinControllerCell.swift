@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomCoinControllerCell: UICollectionViewCell {
+class CustomCoinControllerCell: BaseCell<CoinMarketCap> {
     
     fileprivate let titleContainer: UIView = {
         let view = UIView()
@@ -33,6 +33,14 @@ class CustomCoinControllerCell: UICollectionViewCell {
         lable.text = "BTC"
         return lable
     }()
+    
+    override var item: CoinMarketCap! {
+        didSet {
+            
+            //code for setup
+            
+        }
+    }
 
     
     override init(frame: CGRect) {

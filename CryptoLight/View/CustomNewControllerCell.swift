@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-class CustomNewsControllerCell: UICollectionViewCell {
+class CustomNewsControllerCell: BaseCell<NewsArticles> {
     
     let usernameLable: UILabel = {
         let lable = UILabel()
@@ -38,14 +38,24 @@ class CustomNewsControllerCell: UICollectionViewCell {
         return view
     }()
     
-    var newsArticles: NewsArticles! {
+//    var newsArticles: NewsArticles! {
+//        didSet {
+//
+//            usernameLable.text = newsArticles.title
+//            for images in newsArticles?.urlToImage ?? [""] {
+//                guard let url = URL(string: images) else {return}
+//                titleContainer.sd_setImage(with: url, completed: nil)
+//
+//            }
+//        }
+//    }
+    
+    override var item: NewsArticles! {
         didSet {
-            
-            usernameLable.text = newsArticles.title
-            for images in newsArticles?.urlToImage ?? [""] {
+            usernameLable.text = item.title
+            for images in item?.urlToImage ?? [""] {
                 guard let url = URL(string: images) else {return}
                 titleContainer.sd_setImage(with: url, completed: nil)
-             
             }
         }
     }
@@ -63,10 +73,9 @@ class CustomNewsControllerCell: UICollectionViewCell {
         setupNewsFeed()
         
     }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder: has not been implemented")
-    }
     
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
    
 }
