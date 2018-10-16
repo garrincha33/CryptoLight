@@ -13,10 +13,16 @@ class MainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .purple
-        UINavigationBar.appearance().prefersLargeTitles = true
+        setupNavigationBarCustomisation()
         setupTabBar()
-  
+    }
+    
+    private func setupNavigationBarCustomisation() {
+        UINavigationBar.appearance().prefersLargeTitles = true
+        navigationController?.navigationBar.largeTitleTextAttributes =
+            [NSAttributedString.Key.foregroundColor: UIColor.blue,
+             NSAttributedString.Key.font: UIFont(name: "Poppins-Light", size: 15) ??
+                UIFont.systemFont(ofSize: 30)]
     }
     
     private func setupTabBar() {

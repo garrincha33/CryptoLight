@@ -23,6 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().barStyle = .blackTranslucent
         UINavigationBar.appearance().tintColor = UIColor.rgb(red: 51, green: 212, blue: 128)
+        UINavigationBar.appearance().prefersLargeTitles = true
+        UINavigationBar.appearance().largeTitleTextAttributes =
+            [NSAttributedString.Key.foregroundColor: UIColor.white,
+             NSAttributedString.Key.font: UIFont(name: "Poppins-Light", size: 40) ??
+                UIFont.systemFont(ofSize: 30)]
 
         
         return true

@@ -20,7 +20,7 @@ class CustomNewsControllerCell: BaseCell<NewsArticles> {
         lable.clipsToBounds = true
         lable.layer.shadowRadius = 10
         lable.layer.shadowOpacity = 0.5
-        lable.font = UIFont.boldSystemFont(ofSize: 14)
+        lable.font = UIFont(name: "Poppins-Regular", size: 15)
         lable.textColor = UIColor.rgb(red: 200, green: 201, blue: 202)
         lable.numberOfLines = -1
         return lable
