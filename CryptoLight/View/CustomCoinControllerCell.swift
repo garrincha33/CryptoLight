@@ -10,22 +10,26 @@ import UIKit
 
 class CustomCoinControllerCell: BaseCell<CoinMarketCap> {
 
-    let name: UILabel = {
+    let symbol: UILabel = {
         let lable = UILabel()
-        lable.text = "Bitcoin"
+        lable.font = UIFont(name:"Poppins-Bold",size:40)
+        lable.textColor = .white
         return lable
     }()
     
-    let symbol: UILabel = {
+    let currentPrice: UILabel = {
         let lable = UILabel()
-        lable.text = "BTC"
+        lable.font = UIFont(name: "Poppins-Light", size: 20)
+        lable.textColor = .green
         return lable
     }()
     
     override var item: CoinMarketCap! {
         didSet {
             
-            //code for setup
+            //code for render
+            symbol.text = item.symbol
+            currentPrice.text = item.price_usd
             
         }
     }
@@ -42,6 +46,10 @@ class CustomCoinControllerCell: BaseCell<CoinMarketCap> {
         
         addSubview(titleContainer)
         titleContainer.anchor(top: safeAreaLayoutGuide.topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 50, paddingRight: 0, width: 150, height: 100)
+        addSubview(symbol)
+        symbol.anchor(top: titleContainer.topAnchor, left: titleContainer.leftAnchor, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        addSubview(currentPrice)
+        currentPrice.anchor(top: titleContainer.topAnchor, left: symbol.rightAnchor, bottom: nil, right: rightAnchor, paddingTop: 25, paddingLeft: 15, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
     }
     

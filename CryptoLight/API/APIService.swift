@@ -31,4 +31,25 @@ class APIService {
             }
         }
     }
+    
+    func fetchCoinsFromApi(completionHandler: @escaping ([CoinMarketCap]) -> ()) {
+        let url = FULL_COINS
+        Alamofire.request(url).response { (dataResponse) in
+            if let err = dataResponse.error {
+                print("unable to contact host", err)
+                return
+            }
+            guard let data = dataResponse.data else {return}
+            do {
+                let searchResult = try
+                    JSONDecoder().decode([CoinMarketCap].self, from: data)
+                completionHandler(searchResult)
+                
+            } catch let error {
+                print("unable to decode", error)
+            }
+        }
+    }
+    
+    
 }

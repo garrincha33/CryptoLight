@@ -15,9 +15,10 @@ class BaseCollectionViewController<T: BaseCell<U>, U>: UICollectionViewControlle
     override func viewWillAppear(_ animated: Bool) {
         collectionView.layoutIfNeeded()
         collectionView.register(T.self, forCellWithReuseIdentifier: String(describing: T.self))
-        self.loadViewIfNeeded()
         transparentNavBar()
     }
+    
+     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
@@ -32,7 +33,7 @@ class BaseCollectionViewController<T: BaseCell<U>, U>: UICollectionViewControlle
         return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         
     }
-    
+
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         cell.alpha = 0
         cell.layer.transform = CATransform3DMakeScale(0.5, 0.5, 0.5)

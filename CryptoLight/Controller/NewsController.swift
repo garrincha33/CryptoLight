@@ -14,14 +14,14 @@ class NewsController: BaseCollectionViewController<CustomNewsControllerCell, New
         items = [NewsArticles]()
         fetchArticles()
         collectionView?.backgroundColor = UIColor.rgb(red: 38, green: 45, blue: 47)
+  
     }
     
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    
             let width = (view.frame.width - 3 * 8) / 2 + 155
             return CGSize(width: width, height: width - 70)
         }
-    
+
     fileprivate func fetchArticles() {
         APIService.shared.fetchArticlesFromApi { (articles) in
             self.items = articles

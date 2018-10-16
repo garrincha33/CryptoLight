@@ -11,9 +11,9 @@ import Foundation
 struct CoinMarketCap: Decodable {
 
     var name: String?
-//    var symbol: String?
+    var symbol: String?
 //    var rank: String?
-//    var price_usd: String?
+    var price_usd: String?
 //    var market_cap_usd: String?
 //    var available_supply: String?
 //    var total_supply: String?
@@ -24,8 +24,8 @@ struct CoinMarketCap: Decodable {
 
     enum CodingKeys: String, CodingKey {
         case name
-//        case symbol
-//        case price_usd
+        case symbol
+        case price_usd
 //        case market_cap_usd
     }
     //urlToImage = [try values.decode(String.self, forKey: .urlToImage)]
