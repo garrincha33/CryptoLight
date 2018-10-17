@@ -9,11 +9,17 @@
 import UIKit
 import Alamofire
 
-class CoinsController: BaseCollectionViewController<CustomCoinControllerCell, CoinMarketCap>, UICollectionViewDelegateFlowLayout {
+class CoinsController: BaseCollectionViewController<CustomCoinControllerCell, CoinMarketCap>, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
 
+    
+    let searchController = UISearchController(searchResultsController: nil)
+    
     override func viewDidLoad() {
         items = [CoinMarketCap]()
+        itemCopy = [CoinMarketCap]()
+        
         fetchCoins()
+        searchBarSetup()
         collectionView?.backgroundColor = UIColor.rgb(red: 38, green: 45, blue: 47)
     }
 
@@ -22,10 +28,37 @@ class CoinsController: BaseCollectionViewController<CustomCoinControllerCell, Co
         return CGSize(width: width + 150, height: width - 70)
     }
     
+    fileprivate func searchBarSetup() {
+        hideKeyboardWhenTappedAround()
+        self.definesPresentationContext = true
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
+        searchController.searchBar.searchBarStyle = .minimal
+    }
+    
+    private func doSearch() {
+        if let search = searchController.searchBar.text {
+            items = (search.isEmpty) ? itemCopy : itemCopy.filter({$0.symbol?.localizedCaseInsensitiveContains(search) == true})
+        }
+        collectionView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        doSearch()
+        searchBar.endEditing(true)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        doSearch()
+    }
+
     fileprivate func fetchCoins() {
         APIService.shared.fetchCoinsFromApi { (coins) in
             for _ in coins {
                 self.items = coins
+                self.itemCopy = coins
                 self.collectionView.reloadData()
             }
         }

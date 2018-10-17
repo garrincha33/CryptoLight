@@ -44,6 +44,7 @@
 		1BFD97A42176594F00B27216 /* Poppins-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1BFD97922176594F00B27216 /* Poppins-ExtraLight.ttf */; };
 		1BFD97A52176594F00B27216 /* Poppins-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1BFD97932176594F00B27216 /* Poppins-SemiBoldItalic.ttf */; };
 		1BFD97A62176594F00B27216 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1BFD97942176594F00B27216 /* Poppins-Regular.ttf */; };
+		1BFD97AA2177D64600B27216 /* UIViewController+Dismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFD97A92177D64600B27216 /* UIViewController+Dismiss.swift */; };
 		803FB90A153AC9117AE11E22 /* Pods_CryptoLight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0ABB92A4C5885F59E36CC05 /* Pods_CryptoLight.framework */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +88,7 @@
 		1BFD97922176594F00B27216 /* Poppins-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraLight.ttf"; sourceTree = "<group>"; };
 		1BFD97932176594F00B27216 /* Poppins-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		1BFD97942176594F00B27216 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		1BFD97A92177D64600B27216 /* UIViewController+Dismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Dismiss.swift"; sourceTree = "<group>"; };
 		3660662E9303751DC91A0CE0 /* Pods-CryptoLight.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoLight.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CryptoLight/Pods-CryptoLight.debug.xcconfig"; sourceTree = "<group>"; };
 		36888AD0D542EDE9C240113E /* Pods-CryptoLight.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoLight.release.xcconfig"; path = "Pods/Target Support Files/Pods-CryptoLight/Pods-CryptoLight.release.xcconfig"; sourceTree = "<group>"; };
 		E0ABB92A4C5885F59E36CC05 /* Pods_CryptoLight.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CryptoLight.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -195,6 +197,7 @@
 			children = (
 				1B16C291216D25FA00ADA030 /* CustomColor.swift */,
 				1B16C29A217219DD00ADA030 /* Anchor.swift */,
+				1BFD97A92177D64600B27216 /* UIViewController+Dismiss.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				1B16C29D21723B6A00ADA030 /* CoinMarketCap.swift in Sources */,
 				1B16C2A02172461F00ADA030 /* APIService.swift in Sources */,
 				1BDDEC78215FF53900AA0083 /* MainTabBarController.swift in Sources */,
+				1BFD97AA2177D64600B27216 /* UIViewController+Dismiss.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

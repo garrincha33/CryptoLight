@@ -11,6 +11,7 @@ import UIKit
 class BaseCollectionViewController<T: BaseCell<U>, U>: UICollectionViewController {
 
     var items = [U]()
+    var itemCopy = [U]()
 
     override func viewWillAppear(_ animated: Bool) {
         collectionView.layoutIfNeeded()
