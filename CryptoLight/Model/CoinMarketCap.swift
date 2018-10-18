@@ -13,6 +13,7 @@ struct CoinMarketCap: Decodable {
     var name: String?
     var symbol: String?
 //    var rank: String?
+    var id: String?
     var price_usd: String?
 //    var market_cap_usd: String?
 //    var available_supply: String?
@@ -26,6 +27,7 @@ struct CoinMarketCap: Decodable {
         case name
         case symbol
         case price_usd
+        case id
 //        case market_cap_usd
     }
     //urlToImage = [try values.decode(String.self, forKey: .urlToImage)]

@@ -11,7 +11,6 @@ import Alamofire
 
 class CoinsController: BaseCollectionViewController<CustomCoinControllerCell, CoinMarketCap>, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
 
-    
     let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
@@ -36,11 +35,12 @@ class CoinsController: BaseCollectionViewController<CustomCoinControllerCell, Co
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
         searchController.searchBar.searchBarStyle = .minimal
+        searchController.searchBar.placeholder = "enter the name of your currency"
     }
     
     private func doSearch() {
         if let search = searchController.searchBar.text {
-            items = (search.isEmpty) ? itemCopy : itemCopy.filter({$0.symbol?.localizedCaseInsensitiveContains(search) == true})
+            items = (search.isEmpty) ? itemCopy : itemCopy.filter({$0.id?.localizedCaseInsensitiveContains(search) == true})
         }
         collectionView.reloadData()
     }
