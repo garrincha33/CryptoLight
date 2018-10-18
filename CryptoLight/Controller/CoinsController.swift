@@ -27,6 +27,13 @@ class CoinsController: BaseCollectionViewController<CustomCoinControllerCell, Co
         return CGSize(width: width + 150, height: width - 70)
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = CoinsDetailController()
+        let coins = items[indexPath.row]
+        controller.items = coins
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
     fileprivate func searchBarSetup() {
         hideKeyboardWhenTappedAround()
         self.definesPresentationContext = true
