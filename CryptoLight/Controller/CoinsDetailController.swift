@@ -9,15 +9,13 @@
 import UIKit
 
 class CoinsDetailController: UIViewController {
-
+    
     var coinDetails = [CoinMarketCap]()
     
     var items: CoinMarketCap? {
         didSet {
-            
             navigationItem.title = items?.id
             cryptoTitle.text = items?.symbol
-            
         }
     }
     
@@ -37,7 +35,7 @@ class CoinsDetailController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 2
-        label.font = UIFont(name: "Poppins-ThinItalic", size: 20)
+        label.font = UIFont(name: "Poppins-Light", size: 20)
         label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .center
         label.textColor = .white
@@ -47,10 +45,10 @@ class CoinsDetailController: UIViewController {
         label.layer.addSublayer(bottomLayerUser)
         return label
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = UIColor.rgb(red: 38, green: 45, blue: 47)
         setupLayout()
         

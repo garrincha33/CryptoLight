@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 
 class CoinsController: BaseCollectionViewController<CustomCoinControllerCell, CoinMarketCap>, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
-
+    
     let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
@@ -21,7 +21,7 @@ class CoinsController: BaseCollectionViewController<CustomCoinControllerCell, Co
         searchBarSetup()
         collectionView?.backgroundColor = UIColor.rgb(red: 38, green: 45, blue: 47)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (view.frame.width - 2 * 16) / 2 + 8
         return CGSize(width: width + 150, height: width - 70)
@@ -60,7 +60,7 @@ class CoinsController: BaseCollectionViewController<CustomCoinControllerCell, Co
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         doSearch()
     }
-
+    
     fileprivate func fetchCoins() {
         APIService.shared.fetchCoinsFromApi { (coins) in
             for _ in coins {
