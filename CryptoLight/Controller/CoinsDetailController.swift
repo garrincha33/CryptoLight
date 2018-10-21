@@ -16,15 +16,23 @@ class CoinsDetailController: UIViewController {
         didSet {
             navigationItem.title = items?.id
             cryptoTitle.text = items?.symbol
-            priceChange24Price.text = items?.percent_change_24h
-            
+            priceChange24Price.text = "\("%")\(items?.percent_change_24h ?? "") "
+
             if (priceChange24Price.text?.contains("-"))! {
                 priceChange24Price.textColor = .red
             } else {
                 priceChange24Price.textColor = .green
             }
+            marketCapPrice.text = "\(convertToCurrency((items?.market_cap_usd)!))"
+            currentPrice.text = "\(convertToCurrency((items?.price_usd)!))".trunc(length: 5)
             
-            marketCapPrice.text = items?.market_cap_usd
+            priceChange1Hour.text = "\("%")\(items?.percent_change_1h ?? "") "
+            
+            if (priceChange1Hour.text?.contains("-"))! {
+                priceChange1Hour.textColor = .red
+            } else {
+                priceChange1Hour.textColor = .green
+            }
         }
     }
     
@@ -77,8 +85,7 @@ class CoinsDetailController: UIViewController {
         label.textColor = .white
         return label
     }()
-    
-    
+
     fileprivate let marketCapTitle: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -92,6 +99,53 @@ class CoinsDetailController: UIViewController {
     }()
     
     fileprivate let marketCapPrice: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 2
+        label.font = UIFont(name: "Poppins-Light", size: 14)
+        label.adjustsFontSizeToFitWidth = true
+        label.textAlignment = .center
+        label.textColor = .white
+        return label
+    }()
+    
+    
+    fileprivate let currentPriceTitle: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.text = "Current Price"
+        label.font = UIFont(name: "Poppins-Light", size: 16)
+        label.adjustsFontSizeToFitWidth = true
+        label.textAlignment = .center
+        label.textColor = .white
+        return label
+    }()
+    
+    fileprivate let currentPrice: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 2
+        label.font = UIFont(name: "Poppins-Light", size: 14)
+        label.adjustsFontSizeToFitWidth = true
+        label.textAlignment = .center
+        label.textColor = .white
+        return label
+    }()
+    
+    fileprivate let priceChange1HourTitle: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.text = "Last Hour Price"
+        label.font = UIFont(name: "Poppins-Light", size: 16)
+        label.adjustsFontSizeToFitWidth = true
+        label.textAlignment = .center
+        label.textColor = .white
+        return label
+    }()
+    
+    fileprivate let priceChange1Hour: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 2
@@ -122,7 +176,6 @@ class CoinsDetailController: UIViewController {
         stackView.spacing = 10
         stackView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stackView)
-        
         stackView.anchor(top: cryptoTitle.bottomAnchor, left: backgroundContainer.leftAnchor, bottom: nil, right: backgroundContainer.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 50, height: 50)
         
         let stackViewMarketCap = UIStackView(arrangedSubviews: [marketCapTitle, marketCapPrice])
@@ -131,16 +184,37 @@ class CoinsDetailController: UIViewController {
         stackViewMarketCap.spacing = 10
         stackViewMarketCap.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stackViewMarketCap)
-        
         stackViewMarketCap.anchor(top: stackView.bottomAnchor, left: backgroundContainer.leftAnchor, bottom: nil, right: backgroundContainer.rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 50, height: 50)
         
+        let stackViewCurrentPrice = UIStackView(arrangedSubviews: [currentPriceTitle, currentPrice])
+        stackViewCurrentPrice.axis = .horizontal
+        stackViewCurrentPrice.distribution = .fillEqually
+        stackViewCurrentPrice.spacing = 10
+        stackViewCurrentPrice.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(stackViewCurrentPrice)
+        stackViewCurrentPrice.anchor(top: stackViewMarketCap.bottomAnchor, left: backgroundContainer.leftAnchor, bottom: nil, right: backgroundContainer.rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 50, height: 50)
         
-        
-//
-//        view.addSubview(priceChange24Price)
-//        priceChange24Price.anchor(top: cryptoTitle.bottomAnchor, left: backgroundContainer.leftAnchor, bottom: nil, right: backgroundContainer.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 50, height: 50)
-//        view.addSubview(priceChange24Title)
-//        priceChange24Title.anchor(top: cryptoTitle.bottomAnchor, left: backgroundContainer.leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 250, height: 50)
-        
+        let stackViewLastHour = UIStackView(arrangedSubviews: [priceChange1HourTitle, priceChange1Hour])
+        stackViewLastHour.axis = .horizontal
+        stackViewLastHour.distribution = .fillEqually
+        stackViewLastHour.spacing = 10
+        stackViewLastHour.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(stackViewLastHour)
+        stackViewLastHour.anchor(top: stackViewCurrentPrice.bottomAnchor, left: backgroundContainer.leftAnchor, bottom: nil, right: backgroundContainer.rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 50, height: 50)
+    }
+    
+    // converting number to currency
+    fileprivate func convertToCurrency(_ number: String) -> String {
+        let currencyFormatter = NumberFormatter()
+        currencyFormatter.numberStyle = NumberFormatter.Style.currency
+
+        let numberDouble = Double(number)!
+        if numberDouble >= 1000 {
+            //numberString = convertToCurrency(number: numberDouble)
+            let priceOfCoin: NSNumber = numberDouble as NSNumber
+            let priceString = currencyFormatter.string(from: priceOfCoin)!
+            return priceString
+        }
+        return "$\(number)"
     }
 }

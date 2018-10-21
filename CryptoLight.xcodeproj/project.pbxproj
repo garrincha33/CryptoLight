@@ -17,6 +17,7 @@
 		1B16C2A02172461F00ADA030 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B16C29F2172461F00ADA030 /* APIService.swift */; };
 		1B16C2A221735FCB00ADA030 /* CoinsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B16C2A121735FCB00ADA030 /* CoinsController.swift */; };
 		1B16C2A421736C3500ADA030 /* CustomCoinControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B16C2A321736C3500ADA030 /* CustomCoinControllerCell.swift */; };
+		1BC9979A217C9C6A00CCE68B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC99799217C9C6A00CCE68B /* String.swift */; };
 		1BDDEC61215FF47F00AA0083 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDDEC60215FF47F00AA0083 /* AppDelegate.swift */; };
 		1BDDEC63215FF47F00AA0083 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDDEC62215FF47F00AA0083 /* ViewController.swift */; };
 		1BDDEC66215FF47F00AA0083 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BDDEC64215FF47F00AA0083 /* Main.storyboard */; };
@@ -59,6 +60,7 @@
 		1B16C29F2172461F00ADA030 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		1B16C2A121735FCB00ADA030 /* CoinsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsController.swift; sourceTree = "<group>"; };
 		1B16C2A321736C3500ADA030 /* CustomCoinControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCoinControllerCell.swift; sourceTree = "<group>"; };
+		1BC99799217C9C6A00CCE68B /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		1BDDEC5D215FF47F00AA0083 /* CryptoLight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoLight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BDDEC60215FF47F00AA0083 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1BDDEC62215FF47F00AA0083 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				1B16C291216D25FA00ADA030 /* CustomColor.swift */,
 				1B16C29A217219DD00ADA030 /* Anchor.swift */,
 				1BFD97A92177D64600B27216 /* UIViewController+Dismiss.swift */,
+				1BC99799217C9C6A00CCE68B /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				1B16C29B217219DD00ADA030 /* Anchor.swift in Sources */,
 				1BFD97482175048600B27216 /* BaseCollectionViewController.swift in Sources */,
 				1BDDEC61215FF47F00AA0083 /* AppDelegate.swift in Sources */,
+				1BC9979A217C9C6A00CCE68B /* String.swift in Sources */,
 				1B16C290216D242100ADA030 /* CustomNewControllerCell.swift in Sources */,
 				1B16C29D21723B6A00ADA030 /* CoinMarketCap.swift in Sources */,
 				1B16C2A02172461F00ADA030 /* APIService.swift in Sources */,
