@@ -164,6 +164,55 @@ class CoinsDetailController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        cryptoTitle.alpha = 0.0
+        marketCapTitle.alpha = 0.0
+        priceChange24Title.alpha = 0.0
+        currentPriceTitle.alpha = 0.0
+        priceChange1HourTitle.alpha = 0.0
+        
+        priceChange24Price.alpha = 0.0
+        marketCapPrice.alpha = 0.0
+        currentPrice.alpha = 0.0
+        priceChange1Hour.alpha = 0.0
+        
+        
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        UIView.animate(withDuration: 0.5, delay: 0.9, options: [], animations: {
+            self.cryptoTitle.alpha = 1.0
+        }, completion: nil)
+        UIView.animate(withDuration: 0.9, delay: 1.5, options: [], animations: {
+            self.priceChange24Title.alpha = 1.0
+        }, completion: nil)
+        UIView.animate(withDuration: 1.1, delay: 1.7, options: [], animations: {
+            self.marketCapTitle.alpha = 1.0
+        }, completion: nil)
+        UIView.animate(withDuration: 1.2, delay: 1.9, options: [], animations: {
+            self.currentPriceTitle.alpha = 1.0
+        }, completion: nil)
+        UIView.animate(withDuration: 1.3, delay: 2.1, options: [], animations: {
+            self.priceChange1HourTitle.alpha = 1.0
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 0.9, delay: 1.5, options: [], animations: {
+            self.priceChange24Price.alpha = 1.0
+        }, completion: nil)
+        UIView.animate(withDuration: 1.1, delay: 1.7, options: [], animations: {
+            self.marketCapPrice.alpha = 1.0
+        }, completion: nil)
+        UIView.animate(withDuration: 1.2, delay: 1.9, options: [], animations: {
+            self.currentPrice.alpha = 1.0
+        }, completion: nil)
+        UIView.animate(withDuration: 1.3, delay: 2.1, options: [], animations: {
+            self.priceChange1Hour.alpha = 1.0
+        }, completion: nil)
+    }
+    
+    
+    
     fileprivate func setupLayout() {
         view.addSubview(backgroundContainer)
         backgroundContainer.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 50, paddingLeft: 50, paddingBottom: 0, paddingRight: 50, width: 220, height: 400)
