@@ -25,14 +25,36 @@ class CustomNewsControllerCell: BaseCell<NewsArticles> {
         lable.numberOfLines = -1
         return lable
     }()
+    
+    let errorLable: UILabel = {
+        let lable = UILabel()
+        lable.text = "Username"
+        lable.textColor = .red
+        lable.backgroundColor = UIColor(displayP3Red: 193/255, green: 19/155, blue: 57/255, alpha: 0.5)
+        lable.textAlignment = .center
+        lable.layer.cornerRadius = 16
+        lable.clipsToBounds = true
+        lable.layer.shadowRadius = 10
+        lable.layer.shadowOpacity = 0.5
+        lable.font = UIFont(name: "Poppins-Regular", size: 15)
+        lable.textColor = UIColor.rgb(red: 200, green: 201, blue: 202)
+        lable.numberOfLines = -1
+        return lable
+    }()
 
     override var item: NewsArticles! {
         didSet {
             usernameLable.text = item.title
-            for images in item?.urlToImage ?? [""] {
-                guard let url = URL(string: images) else {return}
-                titleContainer.sd_setImage(with: url, completed: nil)
-            }
+            guard let images = item.urlToImage else {return}
+            print("count ... \(images.count)")
+            guard let url = URL(string: images) else {return}
+            titleContainer.sd_setImage(with: url, completed: nil)
+            
+            
+//            for images in item?.urlToImage ?? "" {
+//                guard let url = URL(string: images) else {return}
+//                titleContainer.sd_setImage(with: url, completed: nil)
+//            }
         }
     }
 
@@ -42,6 +64,8 @@ class CustomNewsControllerCell: BaseCell<NewsArticles> {
         
         addSubview(usernameLable)
         usernameLable.anchor(top: titleContainer.topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 100, height: 100)
+        
+   
     }
     
     override init(frame: CGRect) {

@@ -12,7 +12,8 @@ struct NewsArticles {
     
     var title: String?
     var url: String?
-    var urlToImage = [String]()
+    var urlToImage: String?
+    //var urlToImage = [String]()
     var author: String?
     
     enum CodingKeys: String, CodingKey {
@@ -33,7 +34,7 @@ extension NewsArticles: Decodable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         title = try values.decode(String.self, forKey: .title)
         url = try values.decode(String.self, forKey: .url)
-        urlToImage = [try values.decode(String.self, forKey: .urlToImage)]
+        urlToImage = try values.decode(String.self, forKey: .urlToImage)
         author = try values.decode(String.self, forKey: .author)
     }
 }
