@@ -8,7 +8,17 @@
 
 import UIKit
 
-class NewsController: BaseCollectionViewController<CustomNewsControllerCell, NewsArticles>, UICollectionViewDelegateFlowLayout {
+class NewsController: BaseCollectionViewController<CustomNewsControllerCell, NewsArticles>, UICollectionViewDelegateFlowLayout, NewsDetailsWebControllerDelegate {
+    
+    func didSendUrl(article: NewsArticles) {
+        let newsDetailsController = NewsDetailsWebController()
+        newsDetailsController.delegate = self
+        guard let urlToSend = article.url else {return}
+        newsDetailsController.newsArticles = article
+        newsDetailsController.articleUrl = urlToSend
+        navigationController?.pushViewController(newsDetailsController, animated: true)
+    }
+    
     
     let errorLable: UILabel = {
         let lable = UILabel()
@@ -25,24 +35,24 @@ class NewsController: BaseCollectionViewController<CustomNewsControllerCell, New
         lable.numberOfLines = -1
         return lable
     }()
-    
-    
-    
+
     override func viewDidLoad() {
         items = [NewsArticles]()
         fetchArticles()
         collectionView?.backgroundColor = UIColor.rgb(red: 38, green: 45, blue: 47)
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let article = items[indexPath.row]
+        didSendUrl(article: article)
+    }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (view.frame.width - 3 * 8) / 2 + 155
+        return CGSize(width: width, height: width - 70)
+    }
     
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            let width = (view.frame.width - 3 * 8) / 2 + 155
-            return CGSize(width: width, height: width - 70)
-        }
-
     fileprivate func fetchArticles() {
-        
         APIService.shared.fetchArticlesFromApi { (articles, err) in
             if let err = err {
                 print("unable to list news artcles", err)
