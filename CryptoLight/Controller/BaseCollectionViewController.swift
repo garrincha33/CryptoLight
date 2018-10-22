@@ -52,6 +52,9 @@ class BaseCollectionViewController<T: BaseCell<U>, U>: UICollectionViewControlle
         cell.item = items[indexPath.row]
         return cell
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
     
 }
 

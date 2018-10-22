@@ -16,10 +16,10 @@ class CoinsController: BaseCollectionViewController<CustomCoinControllerCell, Co
     override func viewDidLoad() {
         items = [CoinMarketCap]()
         itemCopy = [CoinMarketCap]()
-        
         fetchCoins()
         searchBarSetup()
         collectionView?.backgroundColor = UIColor.rgb(red: 38, green: 45, blue: 47)
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -38,11 +38,14 @@ class CoinsController: BaseCollectionViewController<CustomCoinControllerCell, Co
         hideKeyboardWhenTappedAround()
         self.definesPresentationContext = true
         navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.hidesSearchBarWhenScrolling = true
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
         searchController.searchBar.searchBarStyle = .minimal
+        searchController.searchBar.sizeToFit()
         searchController.searchBar.placeholder = "enter the name of your currency"
+        searchController.searchBar.tintColor = UIColor.rgb(red: 51, green: 212, blue: 128)
+ 
     }
     
     private func doSearch() {
@@ -60,6 +63,7 @@ class CoinsController: BaseCollectionViewController<CustomCoinControllerCell, Co
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         doSearch()
     }
+
     
     fileprivate func fetchCoins() {
         APIService.shared.fetchCoinsFromApi { (coins) in

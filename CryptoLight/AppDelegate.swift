@@ -31,7 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             [NSAttributedString.Key.foregroundColor: UIColor.white,
              NSAttributedString.Key.font: UIFont(name: "Poppins-Light", size: 40) ??
                 UIFont.systemFont(ofSize: 30)]
-
+        
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = UIColor.rgb(red: 51, green: 212, blue: 128)
         
         return true
     }
