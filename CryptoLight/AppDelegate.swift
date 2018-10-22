@@ -21,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         window?.rootViewController = MainTabBarController()
         
+        //fixes black background on nav bar during transition
+        self.window?.backgroundColor = UIColor.rgb(red: 38, green: 45, blue: 47)
+        
         UINavigationBar.appearance().barStyle = .blackTranslucent
         UINavigationBar.appearance().tintColor = UIColor.rgb(red: 51, green: 212, blue: 128)
         UINavigationBar.appearance().prefersLargeTitles = true

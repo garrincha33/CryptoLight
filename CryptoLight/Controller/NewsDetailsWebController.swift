@@ -37,22 +37,18 @@ class NewsDetailsWebController: UIViewController {
         view.layoutSubviews()
     }
     
-    private func getWebUrl() {
+    fileprivate func getWebUrl() {
         guard let url = URL(string: articleUrl) else {return}
         let myURLRequest:URLRequest = URLRequest(url: url)
         webView.load(myURLRequest)
     }
     
-    private func setupUI() {
+    fileprivate func setupUI() {
         view.addSubview(webView)
         webView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         webView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         webView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
         webView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        
-        
-        
-        
     }
     
     fileprivate func transparentNavBar() {

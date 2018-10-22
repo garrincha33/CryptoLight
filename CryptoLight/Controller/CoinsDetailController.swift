@@ -170,14 +170,10 @@ class CoinsDetailController: UIViewController {
         priceChange24Title.alpha = 0.0
         currentPriceTitle.alpha = 0.0
         priceChange1HourTitle.alpha = 0.0
-        
         priceChange24Price.alpha = 0.0
         marketCapPrice.alpha = 0.0
         currentPrice.alpha = 0.0
         priceChange1Hour.alpha = 0.0
-        
-        
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -196,7 +192,6 @@ class CoinsDetailController: UIViewController {
         UIView.animate(withDuration: 1.3, delay: 2.1, options: [], animations: {
             self.priceChange1HourTitle.alpha = 1.0
         }, completion: nil)
-        
         UIView.animate(withDuration: 0.9, delay: 1.5, options: [], animations: {
             self.priceChange24Price.alpha = 1.0
         }, completion: nil)
