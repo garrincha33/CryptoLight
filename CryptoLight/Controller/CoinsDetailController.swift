@@ -17,7 +17,7 @@ class CoinsDetailController: UIViewController {
             navigationItem.title = items?.id
             cryptoTitle.text = items?.symbol
             priceChange24Price.text = "\("%")\(items?.percent_change_24h ?? "") "
-
+            
             if (priceChange24Price.text?.contains("-"))! {
                 priceChange24Price.textColor = .red
             } else {
@@ -74,7 +74,7 @@ class CoinsDetailController: UIViewController {
         label.textColor = .white
         return label
     }()
-
+    
     fileprivate let priceChange24Price: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -85,7 +85,7 @@ class CoinsDetailController: UIViewController {
         label.textColor = .white
         return label
     }()
-
+    
     fileprivate let marketCapTitle: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -251,7 +251,7 @@ class CoinsDetailController: UIViewController {
     fileprivate func convertToCurrency(_ number: String) -> String {
         let currencyFormatter = NumberFormatter()
         currencyFormatter.numberStyle = NumberFormatter.Style.currency
-
+        
         let numberDouble = Double(number)!
         if numberDouble >= 1000 {
             //numberString = convertToCurrency(number: numberDouble)

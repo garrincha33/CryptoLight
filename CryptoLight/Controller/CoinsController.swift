@@ -32,6 +32,7 @@ class CoinsController: BaseCollectionViewController<CustomCoinControllerCell, Co
         let coins = items[indexPath.row]
         controller.items = coins
         navigationController?.pushViewController(controller, animated: true)
+
     }
     
     fileprivate func searchBarSetup() {

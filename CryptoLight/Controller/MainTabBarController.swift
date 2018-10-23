@@ -37,10 +37,18 @@ class MainTabBarController: UITabBarController {
         tabBar.barTintColor = .clear
         
         viewControllers = [
-            generateNavController(with: newsController, title: "News", image:#imageLiteral(resourceName: "home_selected") ),
-            generateNavController(with: coinsController, title: "Prices", image: #imageLiteral(resourceName: "profile_selected"))
+            generateNavController(with: newsController, title: "News", image: #imageLiteral(resourceName: "cryptoNews.png")),
+            generateNavController(with: coinsController, title: "Prices", image: #imageLiteral(resourceName: "prices_new")  )
+            
         
         ]
+        
+        //modify tab bar insets
+        guard let items = tabBar.items else {return}
+        for item in items {
+            item.title = ""
+            item.imageInsets = UIEdgeInsets(top: 2, left: 0, bottom: -2, right: 0)
+        }
     }
     
     private func generateNavController(with rootViewController: UIViewController, title: String, image: UIImage) -> UIViewController {

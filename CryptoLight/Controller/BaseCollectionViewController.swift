@@ -17,6 +17,8 @@ class BaseCollectionViewController<T: BaseCell<U>, U>: UICollectionViewControlle
         collectionView.layoutIfNeeded()
         collectionView.register(T.self, forCellWithReuseIdentifier: String(describing: T.self))
         transparentNavBar()
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
