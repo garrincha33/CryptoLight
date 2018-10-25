@@ -205,7 +205,7 @@ class CoinsDetailController: UIViewController {
             self.priceChange1Hour.alpha = 1.0
         }, completion: nil)
     }
-    
+
     
     
     fileprivate func setupLayout() {

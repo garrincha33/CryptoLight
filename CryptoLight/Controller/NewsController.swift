@@ -35,10 +35,25 @@ class NewsController: BaseCollectionViewController<CustomNewsControllerCell, New
         lable.numberOfLines = -1
         return lable
     }()
+    
+    lazy var refresh: UIRefreshControl = {
+        let rc = UIRefreshControl()
+        rc.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        return rc
+    }()
+    
+    @objc func handleRefresh() {
+        collectionView.reloadData()
+        let refreshDelay = DispatchTime.now() + .milliseconds(1200)
+        DispatchQueue.main.asyncAfter(deadline: refreshDelay) {
+            self.refresh.endRefreshing()
+        }
+    }
 
     override func viewDidLoad() {
         items = [NewsArticles]()
         fetchArticles()
+        collectionView.refreshControl = refresh
         collectionView?.backgroundColor = UIColor.rgb(red: 38, green: 45, blue: 47)
     }
     
