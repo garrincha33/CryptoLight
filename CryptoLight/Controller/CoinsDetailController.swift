@@ -109,7 +109,6 @@ class CoinsDetailController: UIViewController {
         return label
     }()
     
-    
     fileprivate let currentPriceTitle: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -206,8 +205,6 @@ class CoinsDetailController: UIViewController {
         }, completion: nil)
     }
 
-    
-    
     fileprivate func setupLayout() {
         view.addSubview(backgroundContainer)
         backgroundContainer.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 50, paddingLeft: 50, paddingBottom: 0, paddingRight: 50, width: 220, height: 400)
@@ -251,7 +248,6 @@ class CoinsDetailController: UIViewController {
     fileprivate func convertToCurrency(_ number: String) -> String {
         let currencyFormatter = NumberFormatter()
         currencyFormatter.numberStyle = NumberFormatter.Style.currency
-        
         let numberDouble = Double(number)!
         if numberDouble >= 1000 {
             //numberString = convertToCurrency(number: numberDouble)

@@ -21,9 +21,5 @@ class BaseCell<U>: UICollectionViewCell {
         view.layer.shadowRadius = 10
         view.layer.shadowOpacity = 0.5
         return view
-    }()
-    
-    
-
-    
+    }() 
 }

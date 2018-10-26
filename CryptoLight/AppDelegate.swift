@@ -16,24 +16,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
         window = UIWindow()
         window?.makeKeyAndVisible()
         window?.rootViewController = MainTabBarController()
-        
         //fixes black background on nav bar during transition
         self.window?.backgroundColor = UIColor.rgb(red: 38, green: 45, blue: 47)
         
         UINavigationBar.appearance().barStyle = .blackTranslucent
         UINavigationBar.appearance().tintColor = UIColor.rgb(red: 51, green: 212, blue: 128)
         UINavigationBar.appearance().prefersLargeTitles = true
+        
         UINavigationBar.appearance().largeTitleTextAttributes =
             [NSAttributedString.Key.foregroundColor: UIColor.white,
              NSAttributedString.Key.font: UIFont(name: "Poppins-Light", size: 40) ??
                 UIFont.systemFont(ofSize: 30)]
         
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = UIColor.rgb(red: 51, green: 212, blue: 128)
-        
         return true
     }
 

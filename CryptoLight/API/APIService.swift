@@ -20,7 +20,6 @@ class APIService {
                 print("unable to contact host", err.localizedDescription)
                 return
             }
-
             guard let data = dataResponse.data else {return}
             do {
                 let searchResult = try

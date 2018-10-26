@@ -65,7 +65,6 @@ class CoinsController: BaseCollectionViewController<CustomCoinControllerCell, Co
         doSearch()
     }
 
-    
     fileprivate func fetchCoins() {
         APIService.shared.fetchCoinsFromApi { (coins) in
             for _ in coins {

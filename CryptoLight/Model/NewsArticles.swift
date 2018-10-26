@@ -13,7 +13,6 @@ struct NewsArticles {
     var title: String?
     var url: String?
     var urlToImage: String?
-    //var urlToImage = [String]()
     var author: String?
     
     enum CodingKeys: String, CodingKey {

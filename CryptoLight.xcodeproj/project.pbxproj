@@ -150,7 +150,6 @@
 				1BFD97822176594300B27216 /* Fonts */,
 				1B16C29E2172460C00ADA030 /* API */,
 				1B16C293216FC65800ADA030 /* Constants */,
-				1BDDEC76215FF4E500AA0083 /* Utils */,
 				1BDDEC75215FF4DE00AA0083 /* Extensions */,
 				1BDDEC74215FF4D900AA0083 /* Controller */,
 				1BDDEC73215FF4D300AA0083 /* View */,
@@ -206,13 +205,6 @@
 				1BC99799217C9C6A00CCE68B /* String.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		1BDDEC76215FF4E500AA0083 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utils;
 			sourceTree = "<group>";
 		};
 		1BFD97822176594300B27216 /* Fonts */ = {

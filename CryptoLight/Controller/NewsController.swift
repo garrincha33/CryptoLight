@@ -19,7 +19,6 @@ class NewsController: BaseCollectionViewController<CustomNewsControllerCell, New
         navigationController?.pushViewController(newsDetailsController, animated: true)
     }
     
-    
     let errorLable: UILabel = {
         let lable = UILabel()
         lable.text = "unable to list news artcles please try again later"

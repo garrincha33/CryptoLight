@@ -49,12 +49,6 @@ class CustomNewsControllerCell: BaseCell<NewsArticles> {
             print("count ... \(images.count)")
             guard let url = URL(string: images) else {return}
             titleContainer.sd_setImage(with: url, completed: nil)
-            
-            
-//            for images in item?.urlToImage ?? "" {
-//                guard let url = URL(string: images) else {return}
-//                titleContainer.sd_setImage(with: url, completed: nil)
-//            }
         }
     }
 
@@ -64,8 +58,6 @@ class CustomNewsControllerCell: BaseCell<NewsArticles> {
         
         addSubview(usernameLable)
         usernameLable.anchor(top: titleContainer.topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 100, height: 100)
-        
-   
     }
     
     override init(frame: CGRect) {

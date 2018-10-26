@@ -24,13 +24,11 @@ class MainTabBarController: UITabBarController {
              NSAttributedString.Key.font: UIFont(name: "Poppins-Light", size: 15) ??
                 UIFont.systemFont(ofSize: 30)]
     }
-    
     private func setupTabBar() {
-        let layout = UICollectionViewFlowLayout()
+        let newsLayout = UICollectionViewFlowLayout()
         let coinLayout = UICollectionViewFlowLayout()
-        let newsController = NewsController(collectionViewLayout: layout)
+        let newsController = NewsController(collectionViewLayout: newsLayout)
         let coinsController = CoinsController(collectionViewLayout: coinLayout)
-        
         
         tabBar.tintColor = UIColor.rgb(red: 51, green: 212, blue: 128)
         tabBar.isTranslucent = true
@@ -39,10 +37,7 @@ class MainTabBarController: UITabBarController {
         viewControllers = [
             generateNavController(with: newsController, title: "News", image: #imageLiteral(resourceName: "cryptoNews.png")),
             generateNavController(with: coinsController, title: "Prices", image: #imageLiteral(resourceName: "prices_new")  )
-            
-        
         ]
-        
         //modify tab bar insets
         guard let items = tabBar.items else {return}
         for item in items {
@@ -52,14 +47,10 @@ class MainTabBarController: UITabBarController {
     }
     
     private func generateNavController(with rootViewController: UIViewController, title: String, image: UIImage) -> UIViewController {
-        
         let navController = UINavigationController(rootViewController: rootViewController)
         rootViewController.title = title
         navController.tabBarItem.title = title
         navController.tabBarItem.image = image
-        
         return navController
-        
     }
-    
 }
