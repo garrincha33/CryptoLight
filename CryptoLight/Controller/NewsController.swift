@@ -43,9 +43,9 @@ class NewsController: BaseCollectionViewController<CustomNewsControllerCell, New
     }()
     
     @objc func handleRefresh() {
-        collectionView.reloadData()
         let refreshDelay = DispatchTime.now() + .milliseconds(1200)
         DispatchQueue.main.asyncAfter(deadline: refreshDelay) {
+            self.fetchArticles()
             self.refresh.endRefreshing()
         }
     }
