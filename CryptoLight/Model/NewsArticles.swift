@@ -31,9 +31,9 @@ struct SearchResults: Decodable {
 extension NewsArticles: Decodable {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        title = try values.decode(String.self, forKey: .title)
-        url = try values.decode(String.self, forKey: .url)
-        urlToImage = try values.decode(String.self, forKey: .urlToImage)
-        author = try values.decode(String.self, forKey: .author)
+        title = try values.decodeIfPresent(String.self, forKey: .title)
+        url = try values.decodeIfPresent(String.self, forKey: .url)
+        urlToImage = try values.decodeIfPresent(String.self, forKey: .urlToImage)
+        author = try values.decodeIfPresent(String.self, forKey: .author)
     }
 }

@@ -24,7 +24,7 @@ class CoinsDetailController: UIViewController {
                 priceChange24Price.textColor = .green
             }
             marketCapPrice.text = "\(convertToCurrency((items?.market_cap_usd)!))"
-            currentPrice.text = "\(convertToCurrency((items?.price_usd)!))".trunc(length: 5)
+            currentPrice.text = "\(convertToCurrency((items?.price_usd)!))".trunc(length: 6)
             
             priceChange1Hour.text = "\("%")\(items?.percent_change_1h ?? "") "
             
@@ -56,10 +56,6 @@ class CoinsDetailController: UIViewController {
         label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .center
         label.textColor = .white
-        let bottomLayerUser = CALayer()
-        bottomLayerUser.frame = CGRect(x: 0, y: 36, width: 260, height: 0.5)
-        bottomLayerUser.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 175/255, alpha: 1).cgColor
-        label.layer.addSublayer(bottomLayerUser)
         return label
     }()
     

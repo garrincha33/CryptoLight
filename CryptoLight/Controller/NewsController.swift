@@ -22,7 +22,6 @@ class NewsController: BaseCollectionViewController<CustomNewsControllerCell, New
     let errorLable: UILabel = {
         let lable = UILabel()
         lable.text = "unable to list news artcles please try again later"
-        lable.textColor = .red
         lable.backgroundColor = UIColor(displayP3Red: 193/255, green: 19/155, blue: 57/255, alpha: 0.5)
         lable.textAlignment = .center
         lable.layer.cornerRadius = 16
