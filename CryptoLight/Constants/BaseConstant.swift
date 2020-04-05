@@ -21,5 +21,7 @@ let FULL_MASH = "https://newsapi.org/v2/top-headlines?sources=mashable&apiKey=19
 
 //COINS CONSTANTS --- using api.coinmarketcap
 let FULL_COINS = "https://api.coinmarketcap.com/v1/ticker/"
+//update api using new coinlayer
+let NEW_FULL_COINS = "https://api.coinlore.net/api/tickers/"
 
 

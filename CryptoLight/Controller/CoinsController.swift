@@ -16,12 +16,18 @@ class CoinsController: BaseCollectionViewController<CustomCoinControllerCell, Co
     override func viewDidLoad() {
         items = [CoinMarketCap]()
         itemCopy = [CoinMarketCap]()
-        fetchCoins()
+        
         searchBarSetup()
         collectionView?.backgroundColor = UIColor.rgb(red: 38, green: 45, blue: 47)
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        
+        fetchCoins()
+        
+    }
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (view.frame.width - 2 * 16) / 2 + 8
         return CGSize(width: width + 150, height: width - 70)
@@ -40,7 +46,7 @@ class CoinsController: BaseCollectionViewController<CustomCoinControllerCell, Co
         self.definesPresentationContext = true
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = true
-        searchController.dimsBackgroundDuringPresentation = false
+        //searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
         searchController.searchBar.searchBarStyle = .minimal
         searchController.searchBar.sizeToFit()
@@ -51,7 +57,7 @@ class CoinsController: BaseCollectionViewController<CustomCoinControllerCell, Co
     
     private func doSearch() {
         if let search = searchController.searchBar.text {
-            items = (search.isEmpty) ? itemCopy : itemCopy.filter({$0.id?.localizedCaseInsensitiveContains(search) == true})
+            items = (search.isEmpty) ? itemCopy : itemCopy.filter({$0.symbol?.localizedCaseInsensitiveContains(search) == true})
         }
         collectionView.reloadData()
     }
