@@ -14,7 +14,7 @@ class CoinsDetailController: UIViewController {
     
     var items: CoinMarketCap? {
         didSet {
-            navigationItem.title = items?.id
+            navigationItem.title = items?.name
             cryptoTitle.text = items?.symbol
             priceChange24Price.text = "\("%")\(items?.percent_change_24h ?? "") "
             
