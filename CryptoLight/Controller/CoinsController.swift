@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 
 class CoinsController: BaseCollectionViewController<CustomCoinControllerCell, CoinMarketCap>, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
-    
+
     let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
@@ -50,11 +50,13 @@ class CoinsController: BaseCollectionViewController<CustomCoinControllerCell, Co
         searchController.searchBar.delegate = self
         searchController.searchBar.searchBarStyle = .minimal
         searchController.searchBar.sizeToFit()
-        searchController.searchBar.placeholder = "enter the name of your currency"
-        searchController.searchBar.tintColor = UIColor.rgb(red: 51, green: 212, blue: 128)
+        searchController.searchBar.tintColor = UIColor.white
+        searchController.searchBar.searchTextField.attributedPlaceholder = NSAttributedString(string: "enter the name of your currency", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+        let textFieldInsideSearchBar = searchController.searchBar.value(forKey: "searchField") as? UITextField
+        textFieldInsideSearchBar?.textColor = UIColor.white
  
     }
-    
+
     private func doSearch() {
         if let search = searchController.searchBar.text {
             items = (search.isEmpty) ? itemCopy : itemCopy.filter({$0.symbol?.localizedCaseInsensitiveContains(search) == true})

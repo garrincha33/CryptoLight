@@ -39,8 +39,9 @@ class NewsDetailsWebController: UIViewController {
     
     fileprivate func getWebUrl() {
         guard let url = URL(string: articleUrl) else {return}
-        let myURLRequest:URLRequest = URLRequest(url: url)
-        webView.load(myURLRequest)
+        //let myURLRequest:URLRequest = URLRequest(url: url)
+        //webView.load(myURLRequest)
+        UIApplication.shared.open(url)
     }
     
     fileprivate func setupUI() {

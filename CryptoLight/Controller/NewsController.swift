@@ -57,7 +57,9 @@ class NewsController: BaseCollectionViewController<CustomNewsControllerCell, New
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let article = items[indexPath.row]
-        didSendUrl(article: article)
+        guard let link = article.url else {return}
+        guard let url = URL(string: link) else {return}
+        UIApplication.shared.open(url)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
